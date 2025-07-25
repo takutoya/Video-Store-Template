@@ -19,3 +19,32 @@ async function loadVideos() {
   });
 }
 loadVideos();
+
+// 追加するコード
+document.getElementById('upload-form').onsubmit = async function (e) {
+  e.preventDefault();
+
+  const title = document.getElementById('title').value;
+  const description = document.getElementById('description').value;
+  const videoFile = document.getElementById('video').files[0];
+  const thumbnailFile = document.getElementById('thumbnail').files[0];
+
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('description', description);
+  formData.append('video', videoFile);
+  formData.append('thumbnail', thumbnailFile);
+
+  const res = await fetch('/api/upload', {
+    method: 'POST',
+    body: formData
+  });
+
+  if (res.ok) {
+    alert('アップロード完了！');
+    loadVideos(); // 再読み込み
+    this.reset();
+  } else {
+    alert('アップロード失敗');
+  }
+};
