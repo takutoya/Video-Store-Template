@@ -14,5 +14,17 @@
   <h1>🎬 シンプル動画販売デモ</h1>
   <div id="video-list"></div>
   <script src="main.js"></script>
+  
+  <!-- 追加部分だけ抜粋 -->
+<h2>動画アップロード</h2>
+<form id="upload-form" enctype="multipart/form-data">
+  <input type="text" id="title" placeholder="タイトル" required>
+  <input type="text" id="description" placeholder="説明" required>
+  <input type="file" id="video" accept="video/*" required>
+  <input type="file" id="thumbnail" accept="image/*" required>
+  <button type="submit">アップロード</button>
+</form>
+<hr>
+
 </body>
 </html>
